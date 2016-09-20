@@ -1,0 +1,57 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    font-size: 100%;
+    font-weight: normal;
+}
+
+.splashScreen {
+    background-color: #66A584;
+}
+
+.alertBox {
+    padding: 2%;
+    background-color: white;
+    box-shadow: 0px 2px 6px rgba(10,10,10,.6);
+    
+    position: fixed;
+    top: 30%;
+}
+body .alertBox.loggedIn {
+    background-color: #66A584;
+    color: white;
+    text-align: center;
+}
+
+#loginForm {
+    color: rgb(100,100,100);
+    font-size: 10pt;
+}
+
+#loginForm fieldset {
+    margin-bottom: 12px;
+}
+
+#loginForm fieldset label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+#loginForm fieldset label input {
+    font-size: 12pt;
+    color: #66A584;
+    padding: 3px 2%;
+    width: 96%;
+    height: 34px;
+    display: block;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px #DDD;
+    background-color: #FEFEFE; 
+}
+#loginForm fieldset label input:focus {
+    border-bottom-color: #66A584;
+}
