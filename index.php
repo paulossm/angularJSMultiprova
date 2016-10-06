@@ -1,8 +1,9 @@
+<?php
+    session_start();
+?>
+<!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        
-        
-        
+    <head>    
         
         <meta charset="utf-8" />
         <title>Multiprova Online</title>
@@ -21,17 +22,23 @@
     
     <body ng-app="multiprovaOnline" class="splashScreen">
         <section class="alertBox col-xs-10 col-xs-offset-1 col-lg-4 col-lg-offset-4">
-            <form ng-controller="loginCtrl" id="loginForm" novalidate>
+            <?php 
+            if(isset($_SESSION['matricula'])) {
+                echo "<h2>You are logged in as " . $_SESSION['matricula'] . "</h2>";
+            }
+            ?>
+            <form action="include/login.php" method="post" id="loginForm" novalidate>
+                <h3>Acesso ao Multiprova</h3>
                 <fieldset>
-                    <label for="username">Usuário
-                    <input required type="text" name="username" ng-model="username"  />
+                    <label for="matricula">Matrícula
+                    <input required type="text" name="matricula" ng-model="username"  />
                     </label>
-                    <label for="password">Senha
-                    <input required type="password" name="password" ng-model="password" />
+                    <label for="senha">Senha
+                    <input required type="password" name="senha" ng-model="password" />
                     </label>
                 </fieldset>
-                <button type="button" ng-click="submit()" class="btn btn-success pull-right">Entrar</button>
-                <p class="text-muted pull-left"><a href="#">esqueceu sua senha?</a></p>
+                <button type="submit" class="btn btn-success pull-right">Entrar</button>
+                <!--<p class="text-muted pull-left"><a href="#">esqueceu sua senha?</a></p>-->
             </form>
         </section>
     
