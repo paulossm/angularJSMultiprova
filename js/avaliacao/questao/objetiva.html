@@ -1,0 +1,11 @@
+<div ng-show="objetiva">
+    <!-- BEGIN INSERÇÃO DE ALTERNATIVAS -->
+    <div ng-repeat="(letra, urlAlternativa) in alternativas">
+        <label class="col-xs-4 col-lg-4">
+            <input type="radio" ng-model="resposta" value="{{letra}}" name="respostaQuestao{{questaoAtual}}">
+            <img
+            ng-src="{{urlAvaliacao +  urlQuestao + urlAlternativa}}" class="alternativa">
+        </label>
+    </div>
+    <!-- END INSERÇÃO DE ALTERNATIVAS -->
+</div>

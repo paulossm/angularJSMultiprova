@@ -12,6 +12,6 @@ $result = mysqli_query($connection, $sql);
 
 $_SESSION['matricula'] = $mat;
 
-header("Location: ../home.php?");
+header("Location: ../home.php");
 
 ?>
