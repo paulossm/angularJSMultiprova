@@ -31,7 +31,7 @@
         
         <input type="hidden" id="codigo" value="<?= $codigoAvaliacao ?>">
         
-        <section id="headInfo" class="col-xs-12">
+    <section id="headInfo" class="col-xs-12">
         <div class="col-xs-12 text-center">
             <h5>Realizando Avaliação: <?= $codigoAvaliacao ?></h5>
         </div>
@@ -67,8 +67,12 @@
                         <div ng-repeat="(letra, urlAlternativa) in alternativas">
                             <label class="col-xs-4 col-lg-4">
                                 <input type="radio" ng-model="resposta.selectedOption" value="{{letra}}" name="respostaQuestao{{questaoAtual}}">
-                                <img
+                                <div>
+                                    <span class="letraAlternativa">{{letra}}</span>
+                                    <img
                                 ng-src="{{urlAvaliacao +  urlQuestao + urlAlternativa}}" class="alternativa">
+                                </div>
+                                
                             </label>
                         </div>
                         <!-- END INSERÇÃO DE ALTERNATIVAS -->
@@ -84,7 +88,8 @@
         </div>
         
         <div class="text-center">
-            <input class="btn btn-default pull-right"  ng-click="saveAnswer()" type="button" id="avancar" value="Próxima">
+            <input class="btn btn-default pull-left" ng-if="questaoAtual > 1 && questaoAtual <= totalQuestoes" ng-click="previous()" type="button" id="retornar" value="Anterior">
+            <input class="btn btn-default pull-right"  ng-click="next()" type="button" id="avancar" value="Próxima">
         </div>
 
         <div id="respostasModal" class="modalHidden col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 panel">

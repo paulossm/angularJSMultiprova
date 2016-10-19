@@ -25,10 +25,16 @@ app.controller("avaliacaoCtrl", function($scope, $http) {
         $scope.enunciado = $scope.urlAvaliacao + $scope.avaliacao[number].url + $scope.avaliacao[number].enunciado;
         $scope.urlQuestao = $scope.avaliacao[number].url;
         
+        if ($scope.respostas[$scope.questaoAtual-1]) {
+            $scope.resposta.selectedOption = $scope.respostas[$scope.questaoAtual-1];
+        }
+        
         if($scope.avaliacao[number].objetiva) {
             $scope.objetiva = true;
             $scope.alternativas = $scope.avaliacao[number].alternativas; // OBJETO alternativas
         }
+        
+        
     }
     
     $scope.saveAnswer = function () {
@@ -36,14 +42,27 @@ app.controller("avaliacaoCtrl", function($scope, $http) {
         *   Salva a resposta de uma questão no 'banco' e
         *   avança para a próxima ou o final da prova.
         **/  
-        $scope.respostas[$scope.questaoAtual-1] = $scope.resposta.selectedOption;
+        $scope.respostas[$scope.questaoAtual-1] = $scope.resposta.selectedOption;    
+    }
+    
+    $scope.next = function() {
+        $scope.saveAnswer();
         
         if($scope.questaoAtual+1 > $scope.totalQuestoes) {
             document.write($scope.respostas);
             return;
         }
-        $scope.loadQuestion(++$scope.questaoAtual);    
+        
+        $scope.loadQuestion(++$scope.questaoAtual);
     }
+    
+    $scope.previous = function() {
+        $scope.saveAnswer();
+        if($scope.questaoAtual-1 > 0 && $scope.questaoAtual-1 <= $scope.totalQuestoes) {
+            $scope.loadQuestion(--$scope.questaoAtual);
+        }
+    }
+    
     $scope.questaoAtual = 1;
     $scope.loadQuestion($scope.questaoAtual);
     

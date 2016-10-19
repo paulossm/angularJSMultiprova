@@ -278,9 +278,17 @@ div.search-form
 
 	transition: all ease .3s;
 }
-
 #prova #avancar:active {
 	border:solid 1px #629979;	
+}
+
+#prova #retornar {
+    color: yellow;
+    transition: all ease-out .3s;
+}
+#prova #retornar:hover, #prova #retornar:active {
+    background-color: yellow;
+    color: black;
 }
 
 #navQuestao h4 {
@@ -298,12 +306,19 @@ div.search-form
 		transition: transform linear .3s;
 }
 
-#resposta img.alternativa:hover {
-	cursor: pointer;
+#resposta label:hover img.alternativa, #resposta label:hover span.letraAlternativa {
+    cursor: pointer;
 	transform: scale(1.05);
-
 	border-color: #629979;
 	transition: transform linear .3s;
+}
+
+#resposta label:hover img.alternativa {
+    border-color: #629979;
+}
+
+#resposta label:hover span.letraAlternativa {
+    color: #629979;
 }
 
 #resposta div[id^="questao"] {
@@ -326,25 +341,19 @@ div.search-form
 	padding: 8px;
 }
 
-#resposta img.alternativa::before {
-	content: " ";
-	display: inline-block;
-
-	padding: 18px;
-
-	margin-right: 10px;
-	position: absolute;
-
-	left: 0;
-	bottom: 50%;
-	background-color: #aaa;
-
-	border-radius: 8px;
+#resposta .letraAlternativa {
+    margin-right: 12px;
+    font-size: 14pt;
+    color: darkgray;
+    cursor: pointer;
 }
 
-#resposta input[type=radio]:checked + img.alternativa {
+#resposta input[type=radio]:checked + div img.alternativa {
 	border-color:#629979;
-    
+}
+
+#resposta input[type=radio]:checked + div span.letraAlternativa {
+    color: #629979;
 }
 
 #resposta textarea {
